@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FDR Portal | AICTE Regulation Bureau</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-icon">₹</div>
+      <div class="brand-copy"><h1>FDR Management<br>Portal</h1><p>AICTE · REGULATION BUREAU</p></div>
+    </div>
+    <div class="nav-label">Workspace</div>
+    <nav class="nav" aria-label="Main navigation">
+      <button class="active" data-page="dashboard"><span class="ico">▦</span><span class="nav-text">Dashboard</span></button>
+      <button data-page="records"><span class="ico">▤</span><span class="nav-text">FDR Repository</span></button>
+      <button data-page="verification"><span class="ico">✓</span><span class="nav-text">Verification Queue</span></button>
+      <button data-page="requests"><span class="ico">⇄</span><span class="nav-text">Release Requests</span></button>
+      <button data-page="institutions"><span class="ico">⌂</span><span class="nav-text">Institutions</span></button>
+      <button data-page="reports"><span class="ico">▥</span><span class="nav-text">Reports & Audit</span></button>
+    </nav>
+    <div class="nav-label">System</div>
+    <nav class="nav">
+      <button data-page="settings"><span class="ico">⚙</span><span class="nav-text">Settings</span></button>
+    </nav>
+    <div class="sidebar-bottom">Prototype interface<br>Demo data only · v1.0<br>© FDR Portal Concept</div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div class="crumb">AICTE Portal <span class="subtle">/</span> <strong id="crumb-label">Dashboard</strong></div>
+      <div class="top-actions">
+        <button class="icon-btn" title="Notifications" onclick="showToast('You are viewing the demo notification centre.')">♧<span class="dot"></span></button>
+        <div class="profile"><div class="avatar">AO</div><div class="profile-copy"><strong>AICTE Officer</strong><small>Regulation Bureau ▾</small></div></div>
+      </div>
+    </header>
+
+    <div class="content">
+      <!-- DASHBOARD -->
+      <section class="page-view active" id="page-dashboard">
+        <div class="page-heading">
+          <div><h2>Good evening, Officer 👋</h2><p>Here is the current overview of security deposits and Fixed Deposit Receipts.</p></div>
+          <div class="button-row"><button class="btn" onclick="exportRecords()">⇩ Export records</button><button class="btn primary" onclick="openModal()">＋ Add FDR record</button></div>
+        </div>
+        <div class="notice"><span>ⓘ</span><div><strong>Prototype notice:</strong> This interface uses sample data. Bank verification, official AICTE integrations and real notifications are not connected.</div></div>
+        <div class="stats">
+          <div class="stat"><div class="stat-top">Total FDR records <span class="stat-icon" style="background:#eaf1ff;color:#2f6fed">▤</span></div><strong id="stat-total">1,284</strong><small><b>↑ 8.2%</b> vs previous quarter</small></div>
+          <div class="stat"><div class="stat-top">Active & verified <span class="stat-icon" style="background:#e8f7ef;color:#16845b">✓</span></div><strong id="stat-active">1,046</strong><small>Valid records currently on file</small></div>
+          <div class="stat"><div class="stat-top">Maturing in 90 days <span class="stat-icon" style="background:#fff4d9;color:#a96b00">◷</span></div><strong id="stat-maturing">38</strong><small><b style="color:#a96b00">Action needed</b> · renew or review</small></div>
+          <div class="stat"><div class="stat-top">Pending review <span class="stat-icon" style="background:#fdecec;color:#c0393a">!</span></div><strong id="stat-pending">17</strong><small>Awaiting authorized officer action</small></div>
+        </div>
+
+        <div class="grid-two">
+          <div class="panel">
+            <div class="panel-head"><div><h3>FDR Portfolio Overview</h3><p>Illustrative instrument status distribution</p></div><select id="chart-period" onchange="showToast('Chart period changed for this demo.')"><option>Last 6 months</option><option>Last 12 months</option><option>This year</option></select></div>
+            <div class="chart-area">
+              <div class="chart-summary"><span><i class="legend-dot" style="background:#2f6fed"></i> Active</span><span><i class="legend-dot" style="background:#f2b84b"></i> Maturing</span><span><i class="legend-dot" style="background:#e16b6b"></i> Pending / overdue</span></div>
+              <div class="bars" aria-label="Illustrative monthly FDR records chart">
+                <div class="bar-group"><div class="bar" style="height:58%;background:#2f6fed"></div><div class="bar" style="height:17%;background:#f2b84b"></div><div class="bar" style="height:9%;background:#e16b6b"></div></div>
+                <div class="bar-group"><div class="bar" style="height:69%;background:#2f6fed"></div><div class="bar" style="height:13%;background:#f2b84b"></div><div class="bar" style="height:11%;background:#e16b6b"></div></div>
+                <div class="bar-group"><div class="bar" style="height:64%;background:#2f6fed"></div><div class="bar" style="height:20%;background:#f2b84b"></div><div class="bar" style="height:8%;background:#e16b6b"></div></div>
+                <div class="bar-group"><div class="bar" style="height:78%;background:#2f6fed"></div><div class="bar" style="height:14%;background:#f2b84b"></div><div class="bar" style="height:6%;background:#e16b6b"></div></div>
+                <div class="bar-group"><div class="bar" style="height:73%;background:#2f6fed"></div><div class="bar" style="height:23%;background:#f2b84b"></div><div class="bar" style="height:8%;background:#e16b6b"></div></div>
+                <div class="bar-group"><div class="bar" style="height:88%;background:#2f6fed"></div><div class="bar" style="height:18%;background:#f2b84b"></div><div class="bar" style="height:10%;background:#e16b6b"></div></div>
+              </div>
+              <div class="month-labels"><span>May</span><span>Jun</span><span>Jul</span><span>Aug</span><span>Sep</span><span>Oct</span></div>
+            </div>
+          </div>
+          <div class="panel">
+            <div class="panel-head"><div><h3>Priority Alerts</h3><p>Cases that may need attention</p></div><button class="text-link" onclick="navigate('verification')">View queue →</button></div>
+            <div class="alert-list">
+              <div class="alert-item"><div class="alert-symbol" style="background:#fff4d9;color:#a96b00">◷</div><div class="alert-copy"><strong>FDR maturity approaching</strong><p>Shivam Institute of Technology · FDR-2024-0182</p><small>Due in 12 days</small></div><span class="pill amber">Soon</span></div>
+              <div class="alert-item"><div class="alert-symbol" style="background:#fdecec;color:#c0393a">!</div><div class="alert-copy"><strong>Document discrepancy</strong><p>Amount entered differs from uploaded document.</p><small>Reported 2 hours ago</small></div><span class="pill red">Review</span></div>
+              <div class="alert-item"><div class="alert-symbol" style="background:#eaf1ff;color:#2f6fed">↻</div><div class="alert-copy"><strong>Renewal document awaited</strong><p>North Valley Technical College</p><small>Pending for 5 days</small></div><span class="pill blue">Pending</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel table-panel">
+          <div class="panel-head"><div><h3>Recently Updated FDR Records</h3><p>Latest instruments submitted or updated in the portal</p></div><button class="text-link" onclick="navigate('records')">View all records →</button></div>
+          <div class="table-tools"><div class="search-wrap"><span>⌕</span><input id="dashboard-search" placeholder="Search institution, FDR number..." oninput="renderTables()"></div><select id="dashboard-status" onchange="renderTables()"><option value="">All statuses</option><option>Verified</option><option>Pending Review</option><option>Expiring Soon</option><option>Discrepancy</option></select></div>
+          <div class="table-scroll"><table><thead><tr><th>FDR / Institution</th><th>Bank</th><th>Amount</th><th>Maturity date</th><th>Status</th><th>Action</th></tr></thead><tbody id="dashboard-table"></tbody></table></div>
+        </div>
+        <div class="bottom-grid">
+          <div class="panel"><div class="panel-head"><div><h3>Verification Queue</h3><p>Records waiting for officer review</p></div><button class="text-link" onclick="navigate('verification')">Open queue →</button></div><div class="mini-list" id="queue-mini"></div></div>
+          <div class="panel"><div class="panel-head"><div><h3>Upcoming Maturities</h3><p>Plan renewal or replacement actions</p></div><button class="text-link" onclick="navigate('records')">View records →</button></div><div class="mini-list" id="maturity-mini"></div></div>
+        </div>
+      </section>
+
+      <!-- FDR REPOSITORY -->
+      <section class="page-view" id="page-records">
+        <div class="page-heading"><div><h2>FDR Repository</h2><p>Search, filter, and manage institution-wise financial instrument records.</p></div><div class="button-row"><button class="btn" onclick="exportRecords()">⇩ Export CSV</button><button class="btn primary" onclick="openModal()">＋ Add FDR record</button></div></div>
+        <div class="panel table-panel"><div class="table-tools"><div class="search-wrap"><span>⌕</span><input id="records-search" placeholder="Search FDR, institution or bank..." oninput="renderTables()"></div><select id="records-status" onchange="renderTables()"><option value="">All statuses</option><option>Verified</option><option>Pending Review</option><option>Expiring Soon</option><option>Discrepancy</option><option>Renewed</option><option>Released</option></select></div>
+          <div class="table-scroll"><table><thead><tr><th>FDR / Institution</th><th>Bank</th><th>Amount</th><th>Issue date</th><th>Maturity date</th><th>Status</th><th>Action</th></tr></thead><tbody id="records-table"></tbody></table></div>
+        </div>
+      </section>
+
+      <!-- VERIFICATION -->
+      <section class="page-view" id="page-verification">
+        <div class="page-heading"><div><h2>Verification Queue</h2><p>Review submitted records and record a scrutiny decision. Final verification remains an authorized human task.</p></div><button class="btn" onclick="showToast('Queue exported in a future integrated version.')">⇩ Export queue</button></div>
+        <div class="stats">
+          <div class="stat"><div class="stat-top">Awaiting review <span class="stat-icon" style="background:#eaf1ff;color:#2f6fed">◷</span></div><strong id="verify-count">3</strong><small>Submitted for review</small></div>
+          <div class="stat"><div class="stat-top">Discrepancies flagged <span class="stat-icon" style="background:#fdecec;color:#c0393a">!</span></div><strong id="discrepancy-count">1</strong><small>Requires closer scrutiny</small></div>
+          <div class="stat"><div class="stat-top">Verified records <span class="stat-icon" style="background:#e8f7ef;color:#16845b">✓</span></div><strong>1,046</strong><small>Sample dashboard figure</small></div>
+          <div class="stat"><div class="stat-top">Verification method <span class="stat-icon" style="background:#f0edff;color:#7057c8">⌕</span></div><strong style="font-size:17px;margin-top:20px">Officer review</strong><small>External bank check not connected</small></div>
+        </div>
+        <div class="panel table-panel"><div class="panel-head"><div><h3>Records Requiring Review</h3><p>Demo records for testing the review workflow</p></div></div><div class="table-scroll"><table><thead><tr><th>FDR / Institution</th><th>Submitted</th><th>Check result</th><th>Status</th><th>Action</th></tr></thead><tbody id="verification-table"></tbody></table></div></div>
+      </section>
+
+      <!-- REQUESTS -->
+      <section class="page-view" id="page-requests">
+        <div class="page-heading"><div><h2>Release & Refund Requests</h2><p>Track requests and route them to the competent authority in line with applicable rules.</p></div><button class="btn primary" onclick="showToast('Institution request submission would be available through the institution login.')">＋ New request (institution)</button></div>
+        <div class="notice"><span>ⓘ</span><div>Submitting a request does not release funds. Each request must satisfy applicable conditions and receive approval from the competent authority.</div></div>
+        <div class="panel table-panel"><div class="panel-head"><div><h3>Request Register</h3><p>Illustrative request data</p></div><select id="request-filter" onchange="renderRequests()"><option value="">All statuses</option><option>Pending Review</option><option>Approved</option><option>More Information</option></select></div><div class="table-scroll"><table><thead><tr><th>Request ID</th><th>Institution</th><th>FDR Reference</th><th>Request type</th><th>Submitted</th><th>Status</th><th>Action</th></tr></thead><tbody id="requests-table"></tbody></table></div></div>
+      </section>
+
+      <!-- INSTITUTIONS -->
+      <section class="page-view" id="page-institutions">
+        <div class="page-heading"><div><h2>Institutions</h2><p>Institution directory and associated FDR record counts.</p></div><button class="btn primary" onclick="showToast('Institution onboarding can be connected to an authorized registration process.')">＋ Add institution</button></div>
+        <div class="panel table-panel"><div class="table-tools"><div class="search-wrap"><span>⌕</span><input id="institution-search" placeholder="Search institution..." oninput="renderInstitutions()"></div></div><div class="table-scroll"><table><thead><tr><th>Institution ID</th><th>Institution name</th><th>State</th><th>FDR records</th><th>Pending actions</th><th>Account status</th></tr></thead><tbody id="institutions-table"></tbody></table></div></div>
+      </section>
+
+      <!-- REPORTS -->
+      <section class="page-view" id="page-reports">
+        <div class="page-heading"><div><h2>Reports & Audit Trail</h2><p>Monitor case status and review traceable activity history.</p></div><button class="btn" onclick="exportRecords()">⇩ Export FDR CSV</button></div>
+        <div class="stats"><div class="stat"><div class="stat-top">Records in demo dataset</div><strong id="report-total">6</strong><small>Sample records only</small></div><div class="stat"><div class="stat-top">Action events</div><strong id="audit-count">4</strong><small>Events in this browser session</small></div><div class="stat"><div class="stat-top">Pending cases</div><strong id="report-pending">2</strong><small>Needs review or action</small></div><div class="stat"><div class="stat-top">Export readiness</div><strong style="font-size:19px;margin-top:20px">Available</strong><small>CSV export for FDR list</small></div></div>
+        <div class="panel"><div class="panel-head"><div><h3>Recent Audit Events</h3><p>Example event history for the prototype</p></div><span class="pill blue">Audit log</span></div><div class="table-scroll"><table><thead><tr><th>Timestamp</th><th>Actor</th><th>Action</th><th>Record</th><th>Details</th></tr></thead><tbody id="audit-table"></tbody></table></div></div>
+      </section>
+
+      <!-- SETTINGS -->
+      <section class="page-view" id="page-settings">
+        <div class="page-heading"><div><h2>Portal Settings</h2><p>Demo preferences for reminders, review, and session display.</p></div></div>
+        <div class="panel"><div class="panel-head"><div><h3>Deadline reminder policy</h3><p>Prototype configuration — production rules should be approved by AICTE.</p></div></div>
+          <div class="form-grid">
+            <div class="field"><label>First reminder (days before maturity)</label><input type="number" id="reminder1" value="90" min="1"></div>
+            <div class="field"><label>Second reminder (days before maturity)</label><input type="number" id="reminder2" value="60" min="1"></div>
+            <div class="field"><label>Final reminder (days before maturity)</label><input type="number" id="reminder3" value="30" min="1"></div>
+            <div class="field"><label>Escalation after overdue (days)</label><input type="number" id="escalation" value="7" min="1"></div>
+            <div class="field full"><label>Notification recipients</label><select><option>Assigned officer + institution contact</option><option>Assigned officer only</option><option>Institution contact only</option></select><div class="helper">Real email/SMS delivery requires an authorized notification service and valid recipient records.</div></div>
+          </div>
+          <div class="form-footer"><button class="btn" onclick="showToast('No settings changed.')">Cancel</button><button class="btn primary" onclick="saveSettings()">Save preferences</button></div>
+        </div>
+      </section>
+      <div class="footer-note">Security Deposit / FDR Management Portal · SIH prototype · All displayed records and figures are fictional demo data.</div>
+    </div>
+  </main>
+</div>
+
+<!-- ADD RECORD MODAL -->
+<div class="modal-backdrop" id="fdr-modal" role="dialog" aria-modal="true" aria-labelledby="modal-heading">
+  <div class="modal">
+    <div class="modal-title"><h3 id="modal-heading">Add FDR Record</h3><button class="close" onclick="closeModal()" aria-label="Close">×</button></div>
+    <form id="fdr-form">
+      <div class="form-grid">
+        <div class="field"><label for="fdr-number">FDR reference number *</label><input id="fdr-number" required placeholder="e.g. FDR-2026-0101"></div>
+        <div class="field"><label for="institution">Institution name *</label><input id="institution" required placeholder="Enter institution name"></div>
+        <div class="field"><label for="bank">Issuing bank *</label><input id="bank" required placeholder="Bank name"></div>
+        <div class="field"><label for="amount">Deposit amount (₹) *</label><input id="amount" required type="number" min="1" placeholder="e.g. 500000"></div>
+        <div class="field"><label for="issue-date">Issue date *</label><input id="issue-date" required type="date"></div>
+        <div class="field"><label for="maturity-date">Maturity date *</label><input id="maturity-date" required type="date"></div>
+        <div class="field full"><label for="document">Upload FDR document (demo only)</label><input id="document" type="file" accept=".pdf,.png,.jpg,.jpeg"><div class="helper">This demo checks the file selection only. It does not upload or securely store documents on a server.</div></div>
+        <div class="field full"><label for="notes">Notes / scrutiny observations</label><input id="notes" placeholder="Optional note"></div>
+      </div>
+      <div class="form-footer"><button type="button" class="btn" onclick="closeModal()">Cancel</button><button type="submit" class="btn primary">Save FDR record</button></div>
+    </form>
+  </div>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
